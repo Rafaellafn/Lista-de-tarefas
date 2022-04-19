@@ -1,5 +1,15 @@
-'use strict';
+:root {
+    --primary-color: #f4ce01;
+    --secondary-color: #0F0F0B;
+}
 
-let banco = [];
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-const getBanco = () => JSON.parse(localStorage.getItem('todoList')) ?? [];
+html {
+    font-size: 62.5%;
+}
+
