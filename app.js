@@ -1,18 +1,17 @@
 'use strict';
 
-let banco = [
-    {'tarefa':'Estudar JS', 'status':''},
-    {'tarefa':'netflix', 'status':'checked'},
-    {'tarefa':'teste1', 'status':''},
-];
+let banco = [];
+
+const getBanco = () => JSON.parse(localStorage.getItem ('todoList')) ?? [];
+const setBanco = (banco) => localStorage.setItem ('todoList', JSON.stringify(banco));
 
 const criarItem = (tarefa, status, indice) => {
     const item = document.createElement('label');
     item.classList.add('todo__item');
-    item.innerHTML =`
-        <input type="checkbox" ${status} data-indice=${indice} >
+    item.innerHTML = `
+        <input type="checkbox" ${status} data-indice=${indice}>
         <div>${tarefa}</div>
-        <input type="button" value="X" data-indice=${indice}>  
+        <input type="button" value="X" data-indice=${indice}>
     `;
     document.getElementById('todoList').appendChild(item);
 }
@@ -26,7 +25,7 @@ const limparTarefas = () => {
 
 const atualizarTela = () => {
     limparTarefas();
-    banco.forEach (item, indice => criarItem(item.tarefa, item.status, indice));
+    banco.forEach ((item, indice) => criarItem(item.tarefa, item.status, indice));
 }
 
 const inserirItem = (evento) => {
